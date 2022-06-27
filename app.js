@@ -25,4 +25,15 @@ function MakeGrid(){
 
 MakeGrid();
 
-console.log(container);
+
+
+
+const grid = document.querySelectorAll('.square-div');
+
+console.log(grid);
+
+
+grid.forEach((grid) => grid.addEventListener('click', (e) =>{
+    console.log(e.target);
+    e.target.style.backgroundColor = 'black';
+}));

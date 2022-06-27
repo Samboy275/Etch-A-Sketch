@@ -1,0 +1,22 @@
+body{
+    background-color: black;
+}
+
+
+
+
+.flex-row{
+    display: flex;
+    width: 160;
+    height: 160;
+    margin: auto;
+}
+
+
+.square-div{
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border: 1px solid black;
+    margin: 0;
+}

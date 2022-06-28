@@ -51,11 +51,13 @@ button{
 
 .square-div{
     background-color: white;
-    border: 1px solid black;
     margin: 0;
-    width: 10px;
+    width: 20px;
 }
 
+.border{
+    outline: 1px solid black;
+}
 
 .footer, .header{
     background-color: darkcyan;

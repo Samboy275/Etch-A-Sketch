@@ -24,6 +24,7 @@ function MakeGrid(size = 32){
             // create a white square div to add to the row div
             const squareDiv = document.createElement('div');
             squareDiv.classList.add('square-div');
+            squareDiv.classList.add('border');
             squareDiv.addEventListener('mousedown', (e) =>{
                 mouseDown = true;
             });
@@ -69,13 +70,39 @@ function MakeGrid(size = 32){
 // getting control buttons 
 const clearButton = document.getElementById('clear');
 const toggleButtons = document.querySelectorAll('.togglers');
+const gridToggle = document.querySelector('.grid-toggle');
+
 // toggle handlers
 let eraserOn = false;
 let rainbowOn = false;
-
+let gridOn = true;
 // adding onclick events for buttons
 clearButton.onclick = clear;
 
+gridToggle.addEventListener('click', (e) => {
+    gridOn = !gridOn
+    if (gridOn)
+    {
+        gridToggle.classList.add('toggle-on');
+        gridToggle.textContent = 'Grid: On';
+    }
+    else
+    {
+        gridToggle.classList.remove('toggle-on');
+        gridToggle.textContent = 'Grid: Off';
+    }
+    const pixels = document.querySelectorAll('.square-div');
+    pixels.forEach((pixel) => {
+        if (gridOn)
+        {
+            pixel.classList.add('border');
+        } 
+        else 
+        {
+            pixel.classList.remove('border');
+        }
+    });
+});
 toggleButtons.forEach((button) => button.addEventListener('click', (e) => {
     ToggleOnOff(e.target.id);
     e.stopPropagation();

@@ -1,5 +1,5 @@
 const container = document.querySelector('.container');
-
+let mouseDown = false;
 // make a grid of 16X16 square divs
 function MakeGrid(){
 
@@ -26,14 +26,22 @@ function MakeGrid(){
 MakeGrid();
 
 
+document.body.onmousedown = function (){
+    mouseDown = true;
+}
 
+document.body.onmouseup = function (){
+    mouseDown = false;
+}
 
 const grid = document.querySelectorAll('.square-div');
 
-console.log(grid);
 
-
-grid.forEach((grid) => grid.addEventListener('click', (e) =>{
+grid.forEach((grid) => grid.addEventListener('mouseover', (e) =>{
     console.log(e.target);
-    e.target.style.backgroundColor = 'black';
+    if (mouseDown)
+    {
+        e.target.style.backgroundColor = 'black';
+        e.stopPropagation();
+    }
 }));

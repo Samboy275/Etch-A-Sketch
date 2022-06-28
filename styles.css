@@ -1,26 +1,76 @@
 body{
     background-color: black;
+    color: cyan;
+    text-align: center;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding: 300px;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 0;
 }
 
-
-
+button{
+    border-radius: 20%;
+    font-size: 16px;
+    background-color: darkslategrey;
+    color: cyan;
+}
+.drawing-pad{
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+    border: 2px cyan solid;
+    width: 600px;
+    border-radius: 20px;
+}
+.buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-self: flex-start;
+    justify-content: space-around;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 380px;
+    height: 380px;
+    align-items: stretch;
+    justify-items: stretch;
+}
 
 .flex-row{
     display: flex;
-    width: 160;
-    height: 160;
-    margin: auto;
+    width: 100%;
+    flex: 1 1 auto;
+    justify-items: stretch;
+    justify-content: stretch;
 }
 
 
 .square-div{
-    width: 10px;
-    height: 10px;
     background-color: white;
     border: 1px solid black;
     margin: 0;
+    width: 10px;
+}
+
+
+.footer, .header{
+    background-color: darkcyan;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+p{
+    margin: 10px;
+}
+
+
+.toggle-on{
+    background-color: cyan;
+    color: darkslategray;
 }

@@ -32,34 +32,12 @@ function MakeGrid(size = 32){
                 mouseDown = false;
             });
             squareDiv.addEventListener('click', (e) =>{
-                if (eraserOn)
-                {
-                    e.target.style.backgroundColor = 'white';
-                }
-                else 
-                {
-                    if (rainbowOn)
-                    {
-                        chosenColor = PickRandomRainbowColor();
-                    }
-                    e.target.style.backgroundColor = chosenColor;
-                }
+                draw(e); // draws on a pixel
             });
             squareDiv.addEventListener('mouseover', (e)=> {
                 if (mouseDown)
                 {
-                    if (eraserOn)
-                    {
-                        e.target.style.backgroundColor = 'white';
-                    }
-                    else 
-                    {
-                        if (rainbowOn)
-                        {
-                            chosenColor = PickRandomRainbowColor();
-                        }
-                        e.target.style.backgroundColor = chosenColor;
-                    }
+                    draw(e);
                 }
             })
             rowDiv.appendChild(squareDiv);
@@ -71,14 +49,19 @@ function MakeGrid(size = 32){
 const clearButton = document.getElementById('clear');
 const toggleButtons = document.querySelectorAll('.togglers');
 const gridToggle = document.querySelector('.grid-toggle');
+const colorChoice = document.getElementById('chosen-color');
 
 // toggle handlers
 let eraserOn = false;
 let rainbowOn = false;
+let originalColor = chosenColor;
 let gridOn = true;
 // adding onclick events for buttons
 clearButton.onclick = clear;
 
+colorChoice.addEventListener('change', (e) => {
+    chosenColor = e.target.value;
+});
 gridToggle.addEventListener('click', (e) => {
     gridOn = !gridOn
     if (gridOn)
@@ -117,7 +100,7 @@ function ToggleOnOff(exception)
         rainbowOn = !rainbowOn;
         if (!rainbowOn)
         {
-            chosenColor = 'black';
+            chosenColor = originalColor;
         }
         eraserOn = false;
     }
@@ -152,4 +135,22 @@ function clear()
     console.log('clear');
     const pixels = document.querySelectorAll('.square-div');
     pixels.forEach((pixel => pixel.style.backgroundColor = 'white'));
+}
+
+
+
+function draw(e){
+    if (eraserOn)
+    {
+        e.target.style.backgroundColor = 'white';
+    }
+    else 
+    {
+        if (rainbowOn)
+        {
+            originalColor = chosenColor
+            chosenColor = PickRandomRainbowColor();
+        }
+        e.target.style.backgroundColor = chosenColor;
+    }
 }

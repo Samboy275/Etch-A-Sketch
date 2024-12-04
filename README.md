@@ -51,7 +51,7 @@ A simple and interactive pixel art drawing pad built using HTML, CSS, and JavaSc
 1. Clone this repository to your local machine:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Samboy275/Etch-A-Sketch
     ```
 
 2. Navigate to project folder:

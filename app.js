@@ -45,7 +45,7 @@ function MakeGrid(size = 32){
         container.appendChild(rowDiv);
     }
 }
-// getting control buttons 
+// getting control buttons
 const clearButton = document.getElementById('clear');
 const toggleButtons = document.querySelectorAll('.togglers');
 const gridToggle = document.querySelector('.grid-toggle');
@@ -79,8 +79,8 @@ gridToggle.addEventListener('click', (e) => {
         if (gridOn)
         {
             pixel.classList.add('border');
-        } 
-        else 
+        }
+        else
         {
             pixel.classList.remove('border');
         }
@@ -94,7 +94,7 @@ toggleButtons.forEach((button) => button.addEventListener('click', (e) => {
 function ToggleOnOff(exception)
 {
     console.log(exception);
-    
+
     if (exception === 'rainbow')
     {
         rainbowOn = !rainbowOn;
@@ -123,10 +123,19 @@ function ToggleOnOff(exception)
 MakeGrid();
 function newGrid()
 {
-    size = parseInt(prompt("Enter the new grid size"));
-    size = Math.min(size, 100);
-    container.innerHTML = '';
-    MakeGrid(size);
+    size = prompt("Enter the new grid size");
+    if (typeof size == "number")
+    {
+        size = Math.min(parseInt(size), 100);
+        container.innerHTML = '';
+        MakeGrid(size);
+    }
+    else
+    {
+        if(size.trim() !== ''){
+            alert("Grid size must be a number");
+        }
+    }
 }
 
 
@@ -144,7 +153,7 @@ function draw(e){
     {
         e.target.style.backgroundColor = 'white';
     }
-    else 
+    else
     {
         if (rainbowOn)
         {
